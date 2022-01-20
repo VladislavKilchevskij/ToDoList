@@ -2,30 +2,30 @@ package com.company.model;
 
 import com.company.enums.Category;
 import com.company.enums.Priority;
-import com.company.enums.Week;
 
+import java.time.DayOfWeek;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Repeatable extends Task {
-    protected Week dayOfWeek;
+    protected DayOfWeek dayOfWeek;
 
     public Repeatable() {
 
     }
 
-    public Repeatable(UUID id, String name, Category category, Priority priority, String date, Week dayOfWeek) {
+    public Repeatable(UUID id, String name, Category category, Priority priority, String date, DayOfWeek dayOfWeek) {
         super(id, name, category, priority, date);
         this.dayOfWeek = dayOfWeek;
     }
 
-    public void setDayOfWeek(Week dayOfWeek) {
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
     @Override
-    public boolean isExecuted() {
-        return super.isExecuted();
+    public boolean execute() {
+        return super.execute();
     }
 
     @Override

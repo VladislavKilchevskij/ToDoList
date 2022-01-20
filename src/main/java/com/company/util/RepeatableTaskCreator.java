@@ -2,14 +2,13 @@ package com.company.util;
 
 import com.company.enums.Category;
 import com.company.enums.Priority;
-import com.company.enums.Week;
 import com.company.model.Repeatable;
 import lombok.experimental.UtilityClass;
 
+import java.time.DayOfWeek;
 import java.util.Scanner;
 import java.util.UUID;
 
-@UtilityClass
 public class RepeatableTaskCreator {
 
     private final Scanner SCANNER = new Scanner(System.in);
@@ -45,8 +44,8 @@ public class RepeatableTaskCreator {
         return SCANNER.nextLine();
     }
 
-    private Week getDayOfWeekFromUser() {
+    private DayOfWeek getDayOfWeekFromUser() {
         System.out.println("Repeat every: ");
-        return Week.valueOf(SCANNER.nextLine());
+        return DayOfWeek.valueOf(SCANNER.nextLine());
     }
 }
