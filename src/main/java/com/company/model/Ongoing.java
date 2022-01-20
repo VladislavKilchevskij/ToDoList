@@ -24,8 +24,8 @@ public class Ongoing extends Task {
     }
 
     @Override
-    public boolean isExecuted() {
-        return super.isExecuted();
+    public boolean execute() {
+        return super.execute();
     }
 
     @Override
