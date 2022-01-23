@@ -2,9 +2,8 @@ package com.company.model;
 
 import com.company.enums.Category;
 import com.company.enums.Priority;
-
 import java.time.DayOfWeek;
-import java.util.Objects;
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Repeatable extends Task {
@@ -14,7 +13,7 @@ public class Repeatable extends Task {
 
     }
 
-    public Repeatable(UUID id, String name, Category category, Priority priority, String date, DayOfWeek dayOfWeek) {
+    public Repeatable(UUID id, String name, Category category, Priority priority, LocalDate date, DayOfWeek dayOfWeek) {
         super(id, name, category, priority, date);
         this.dayOfWeek = dayOfWeek;
     }
@@ -29,22 +28,18 @@ public class Repeatable extends Task {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return super.compareTo(o);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Repeatable that = (Repeatable) o;
-        return dayOfWeek == that.dayOfWeek;
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), dayOfWeek);
+        return super.hashCode();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return super.compareTo(o);
     }
 
     @Override

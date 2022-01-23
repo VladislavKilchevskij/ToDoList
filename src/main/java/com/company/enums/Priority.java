@@ -19,6 +19,7 @@ public enum Priority {
             return Priority.valueOf(SCANNER.nextLine());
         } catch (IllegalArgumentException i) {
             System.out.println("Such priority doesn't exist.");
+            System.out.print("Enter priority: ");
             return inputPriority();
         }
     }

@@ -21,6 +21,7 @@ public enum Category {
             return Category.valueOf(SCANNER.nextLine());
         } catch (IllegalArgumentException i) {
             System.out.println("Such category doesn't exist.");
+            System.out.print("Enter category: ");
             return inputCategory();
         }
     }
