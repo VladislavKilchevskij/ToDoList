@@ -3,7 +3,6 @@ package com.company.util;
 import com.company.enums.Category;
 import com.company.enums.Priority;
 import com.company.model.Single;
-import lombok.experimental.UtilityClass;
 
 import java.util.Scanner;
 import java.util.UUID;
@@ -29,12 +28,12 @@ public class SingleTaskCreator {
 
     private Category getCategoryFromUser() {
         System.out.println("Category: ");
-        return Category.valueOf(SCANNER.nextLine());
+        return Category.inputCategory();
     }
 
     private Priority getPriorityFromUser() {
         System.out.println("Priority: ");
-        return Priority.valueOf(SCANNER.nextLine());
+        return Priority.inputPriority();
     }
 
     private String getDateFromUser() {

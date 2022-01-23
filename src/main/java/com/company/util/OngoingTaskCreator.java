@@ -29,12 +29,12 @@ public class OngoingTaskCreator {
 
     private Category getCategoryFromUser() {
         System.out.println("Category: ");
-        return Category.valueOf(SCANNER.nextLine());
+        return Category.inputCategory();
     }
 
     private Priority getPriorityFromUser() {
         System.out.println("Priority: ");
-        return Priority.valueOf(SCANNER.nextLine());
+        return Priority.inputPriority();
     }
 
     private String getDateFromUser() {

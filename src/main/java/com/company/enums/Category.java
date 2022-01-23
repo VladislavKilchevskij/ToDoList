@@ -16,9 +16,13 @@ public enum Category {
         this.name = name;
     }
 
-    public static Category getCategory() {
-        System.out.println("Choose category: ");
-        return Category.valueOf(SCANNER.nextLine());
+    public static Category inputCategory() {
+        try {
+            return Category.valueOf(SCANNER.nextLine());
+        } catch (IllegalArgumentException i) {
+            System.out.println("Such category doesn't exist.");
+            return inputCategory();
+        }
     }
 
     @Override

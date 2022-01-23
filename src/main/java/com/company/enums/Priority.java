@@ -14,9 +14,13 @@ public enum Priority {
         this.name = name;
     }
 
-    public static Priority getPriority() {
-        System.out.println("Choose category: ");
-        return Priority.valueOf(SCANNER.nextLine());
+    public static Priority inputPriority() {
+        try {
+            return Priority.valueOf(SCANNER.nextLine());
+        } catch (IllegalArgumentException i) {
+            System.out.println("Such priority doesn't exist.");
+            return inputPriority();
+        }
     }
 
     @Override
