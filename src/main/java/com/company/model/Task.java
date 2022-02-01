@@ -24,6 +24,9 @@ public abstract class Task implements Executable, Comparable {
         this.name = name;
         this.date = date;
     }
+    public String getName() {
+        return name;
+    }
 
     public void setId(UUID id) {
         this.id = id;
@@ -58,7 +61,7 @@ public abstract class Task implements Executable, Comparable {
     }
 
     @Override
-    public boolean isExecuted() {
+    public boolean execute() {
         return false;
     }
 

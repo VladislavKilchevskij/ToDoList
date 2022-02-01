@@ -8,7 +8,6 @@ import lombok.experimental.UtilityClass;
 import java.util.Scanner;
 import java.util.UUID;
 
-@UtilityClass
 public class SingleTaskCreator {
     private final Scanner SCANNER = new Scanner(System.in);
 

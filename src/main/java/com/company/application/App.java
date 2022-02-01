@@ -4,12 +4,15 @@ import com.company.data.TaskDataBase;
 import com.company.data.UserDataBase;
 import com.company.enums.Category;
 import com.company.enums.Priority;
-import com.company.enums.Week;
 import com.company.model.Ongoing;
 import com.company.model.Repeatable;
 import com.company.model.Single;
 import com.company.users.User;
+import com.company.util.OngoingTaskCreator;
+import com.company.util.RepeatableTaskCreator;
+import com.company.util.SingleTaskCreator;
 
+import java.time.DayOfWeek;
 import java.util.UUID;
 
 public class App {
@@ -35,7 +38,7 @@ public class App {
 //        UserDataBase.add(userTest2);
 //        UserDataBase.printInfo();
 
-//   Наполнение базы данных пользователей для демонстрации
+//   Наполнение базы данных пользователей для теста
         User<String> userTest = new User.Builder<String>()
                 .withFirstName("Vladislav")
                 .withLastName("Smirnov")
@@ -61,11 +64,11 @@ public class App {
 //
 //        Ongoing ot = new OngoingTaskCreator().create();
 //        TaskDataBase.add(ot);
-
+//
 //        TaskDataBase.printInfo();
 
 
-//   Наполнение базы данных задач для демонстрации
+//   Наполнение базы данных задач для теста
 
         Single st1 = new Single(UUID.randomUUID()
                 , "Visit doctor"
@@ -80,7 +83,7 @@ public class App {
                 , Category.EDUCATION
                 , Priority.LOW
                 , "02.01.2022"
-                , Week.MONDAY);
+                , DayOfWeek.MONDAY);
         TaskDataBase.add(rt1);
 
         Ongoing ong1 = new Ongoing(UUID.randomUUID()
@@ -92,10 +95,10 @@ public class App {
         TaskDataBase.add(ong1);
 
         TaskDataBase.printInfo();
+        TaskDataBase.sorted();
+        TaskDataBase.filterByCategory();
+        TaskDataBase.printTasksNames();
 
-        TaskDataBase.sort();
-
-        TaskDataBase.printInfo();
 
     }
 }
