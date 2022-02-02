@@ -8,9 +8,6 @@ import com.company.model.Ongoing;
 import com.company.model.Repeatable;
 import com.company.model.Single;
 import com.company.users.User;
-import com.company.util.OngoingTaskCreator;
-import com.company.util.RepeatableTaskCreator;
-import com.company.util.SingleTaskCreator;
 
 import java.time.DayOfWeek;
 import java.util.UUID;
@@ -94,11 +91,11 @@ public class App {
                 , "20.01.2022");
         TaskDataBase.add(ong1);
 
-        TaskDataBase.printInfo();
+        TaskDataBase.printAllTasks();
         TaskDataBase.sorted();
         TaskDataBase.filterByCategory();
         TaskDataBase.printTasksNames();
-
+        TaskDataBase.showTask();
 
     }
 }

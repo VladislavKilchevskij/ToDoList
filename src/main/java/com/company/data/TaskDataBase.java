@@ -1,13 +1,16 @@
 package com.company.data;
 
 import com.company.enums.Category;
+import com.company.exceptions.TaskNotFoundException;
 import com.company.model.Task;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public final class TaskDataBase {
+
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private TaskDataBase() {
     }
@@ -29,7 +32,8 @@ public final class TaskDataBase {
     }
 
     public static void filterByCategory() {
-        Category category = Category.getCategory();
+        System.out.println("Input category: ");
+        Category category = Category.inputCategory();
         TASKS.stream()
                 .filter(s -> s.getTaskCategory().equals(category))
                 .forEach(System.out::println);
@@ -37,11 +41,27 @@ public final class TaskDataBase {
 
     public static void printTasksNames() {
         TASKS.stream()
-                .map(s -> s.getName())
+                .map(Task::getName)
                 .forEach(System.out::println);
     }
 
-    public static void printInfo() {
+    public static void showTask() {
+        System.out.print("Enter task's name: ");
+        String taskName = SCANNER.nextLine();
+        try {
+            if (TASKS.stream()
+                    .noneMatch(s -> s.getName().equals(taskName))) throw new TaskNotFoundException();
+        } catch (TaskNotFoundException t) {
+            System.out.println(t.getMessage());
+            showTask();
+        }
+        TASKS.stream()
+                .filter(s -> s.getName().equals(taskName))
+                .forEach(System.out::println);
+
+    }
+
+    public static void printAllTasks() {
         System.out.println("----------------------TASKS----------------------");
         TASKS.forEach(System.out::println);
         System.out.println("-------------------------------------------------");

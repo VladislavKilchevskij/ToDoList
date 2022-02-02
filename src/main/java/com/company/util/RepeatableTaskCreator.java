@@ -3,7 +3,6 @@ package com.company.util;
 import com.company.enums.Category;
 import com.company.enums.Priority;
 import com.company.model.Repeatable;
-import lombok.experimental.UtilityClass;
 
 import java.time.DayOfWeek;
 import java.util.Scanner;
@@ -31,12 +30,12 @@ public class RepeatableTaskCreator {
 
     private Category getCategoryFromUser() {
         System.out.println("Category: ");
-        return Category.valueOf(SCANNER.nextLine());
+        return Category.inputCategory();
     }
 
     private Priority getPriorityFromUser() {
         System.out.println("Priority: ");
-        return Priority.valueOf(SCANNER.nextLine());
+        return Priority.inputPriority();
     }
 
     private String getDateFromUser() {
@@ -46,6 +45,11 @@ public class RepeatableTaskCreator {
 
     private DayOfWeek getDayOfWeekFromUser() {
         System.out.println("Repeat every: ");
-        return DayOfWeek.valueOf(SCANNER.nextLine());
+        try {
+            return DayOfWeek.valueOf(SCANNER.nextLine());
+        } catch (IllegalArgumentException i) {
+            System.out.println("Such day of week doesn't exist.");
+            return getDayOfWeekFromUser();
+        }
     }
 }
