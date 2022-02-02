@@ -14,7 +14,7 @@ public class RepeatableTaskCreator {
 
     private final Scanner SCANNER = new Scanner(System.in);
 
-    public Repeatable create() {
+    protected Repeatable create() {
         Repeatable repeatableTask = new Repeatable();
         repeatableTask.setId(UUID.randomUUID());
         repeatableTask.setName(getNameFromUser());

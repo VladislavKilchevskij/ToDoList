@@ -13,7 +13,7 @@ import java.util.UUID;
 public class SingleTaskCreator {
     private final Scanner SCANNER = new Scanner(System.in);
 
-    public Single create() {
+    protected Single create() {
         Single singleTask = new Single();
         singleTask.setId(UUID.randomUUID());
         singleTask.setName(getNameFromUser());
