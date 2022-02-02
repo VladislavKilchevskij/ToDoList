@@ -2,20 +2,17 @@ package com.company.model;
 
 import com.company.enums.Category;
 import com.company.enums.Priority;
+
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Repeatable extends Task {
+public class Repeatable extends Task implements Serializable {
     protected DayOfWeek dayOfWeek;
 
     public Repeatable() {
 
-    }
-
-    public Repeatable(UUID id, String name, Category category, Priority priority, LocalDate date, DayOfWeek dayOfWeek) {
-        super(id, name, category, priority, date);
-        this.dayOfWeek = dayOfWeek;
     }
 
     public void setDayOfWeek(DayOfWeek dayOfWeek) {

@@ -13,7 +13,7 @@ public class OngoingTaskCreator {
 
     private final Scanner SCANNER = new Scanner(System.in);
 
-    public Ongoing create() {
+    protected Ongoing create() {
         Ongoing ongoingTask = new Ongoing();
         ongoingTask.setId(UUID.randomUUID());
         ongoingTask.setName(getNameFromUser());

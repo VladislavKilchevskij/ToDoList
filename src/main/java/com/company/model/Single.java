@@ -3,22 +3,17 @@ package com.company.model;
 import com.company.enums.Category;
 import com.company.enums.Priority;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Objects;
 import java.util.UUID;
 
-public class Single extends Task {
+public class Single extends Task implements Serializable {
 
     protected LocalTime time;
 
     public Single() {
 
-    }
-
-    public Single(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date, LocalTime time) {
-        super(id, name, taskCategory, taskPriority, date);
-        this.time = time;
     }
 
     public void setTime(LocalTime time) {

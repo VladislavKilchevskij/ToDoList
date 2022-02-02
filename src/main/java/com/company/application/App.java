@@ -2,13 +2,8 @@ package com.company.application;
 
 import com.company.data.TaskDataBase;
 import com.company.data.UserDataBase;
-import com.company.model.Ongoing;
-import com.company.model.Repeatable;
-import com.company.model.Single;
 import com.company.users.User;
-import com.company.util.OngoingTaskCreator;
-import com.company.util.RepeatableTaskCreator;
-import com.company.util.SingleTaskCreator;
+import com.company.util.TaskOptionsUtils;
 
 public class App {
 
@@ -49,23 +44,17 @@ public class App {
         UserDataBase.add(userTest2);
         UserDataBase.printInfo();
 
+        TaskDataBase.loadTDB();
 
-//   Наполнение базы данных задач пользователем
-        Single st = new SingleTaskCreator().create();
-        TaskDataBase.add(st);
-
-        Repeatable rt = new RepeatableTaskCreator().create();
-        TaskDataBase.add(rt);
-
-        Ongoing ot = new OngoingTaskCreator().create();
-        TaskDataBase.add(ot);
+        TaskOptionsUtils.openTaskCreatorsMenu();
 
 
-        TaskDataBase.printAllTasks();
-        TaskDataBase.sortByPriority();
-        TaskDataBase.filterByCategory();
-        TaskDataBase.printTasksNames();
-        TaskDataBase.showTask();
+//        TaskDataBase.printAllTasks();
+//        TaskDataBase.sortByPriority();
+//        TaskDataBase.filterByCategory();
+//        TaskDataBase.printTasksNames();
+//        TaskDataBase.showTask();
+
 
     }
 }

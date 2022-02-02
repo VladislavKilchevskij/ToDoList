@@ -1,25 +1,16 @@
 package com.company.model;
 
-import com.company.enums.Category;
-import com.company.enums.Priority;
-
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.UUID;
 
-public class Ongoing extends Task {
+public class Ongoing extends Task implements Serializable {
 
     protected LocalDate endDate;
     protected Period untillDeadline;
 
     public Ongoing() {
 
-    }
-
-    public Ongoing(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date, LocalDate endDate, Period untillDeadline) {
-        super(id, name, taskCategory, taskPriority, date);
-        this.endDate = endDate;
-        this.untillDeadline = untillDeadline;
     }
 
     public void setEndDate(LocalDate endDate) {

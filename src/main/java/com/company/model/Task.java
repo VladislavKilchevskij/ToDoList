@@ -2,11 +2,13 @@ package com.company.model;
 
 import com.company.enums.Category;
 import com.company.enums.Priority;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-public abstract class Task implements Executable, Comparable {
+public abstract class Task implements Executable, Comparable, Serializable {
     public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     public static final DateTimeFormatter TIME_PATTERN = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -19,7 +21,7 @@ public abstract class Task implements Executable, Comparable {
     protected Task() {
     }
 
-    public Task(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date) {
+    protected Task(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date) {
         this.id = id;
         this.name = name;
         this.taskCategory = taskCategory;
