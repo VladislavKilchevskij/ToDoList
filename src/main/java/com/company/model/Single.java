@@ -3,23 +3,25 @@ package com.company.model;
 import com.company.enums.Category;
 import com.company.enums.Priority;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Single extends Task {
 
-    protected String time;
+    protected LocalTime time;
 
     public Single() {
 
     }
 
-    public Single(UUID id, String name, Category category, Priority priority, String date, String time) {
-        super(id, name, category, priority, date);
+    public Single(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date, LocalTime time) {
+        super(id, name, taskCategory, taskPriority, date);
         this.time = time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
@@ -29,17 +31,13 @@ public class Single extends Task {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Single single = (Single) o;
-        return Objects.equals(time, single.time);
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), time);
+        return super.hashCode();
     }
 
     @Override

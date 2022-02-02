@@ -3,7 +3,10 @@ package com.company.util;
 import com.company.enums.Category;
 import com.company.enums.Priority;
 import com.company.model.Single;
+import com.company.model.Task;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -22,27 +25,28 @@ public class SingleTaskCreator {
     }
 
     private String getNameFromUser() {
-        System.out.println("Name: ");
+        System.out.print("Name: ");
         return SCANNER.nextLine();
     }
 
     private Category getCategoryFromUser() {
-        System.out.println("Category: ");
+        System.out.print("Category: ");
         return Category.inputCategory();
     }
 
     private Priority getPriorityFromUser() {
-        System.out.println("Priority: ");
+        System.out.print("Priority: ");
         return Priority.inputPriority();
     }
 
-    private String getDateFromUser() {
-        System.out.println("Date: ");
-        return SCANNER.nextLine();
+    private LocalDate getDateFromUser() {
+        System.out.print("Date: ");
+        return LocalDate.parse(SCANNER.nextLine(), Task.DATE_PATTERN);
     }
 
-    private String getTimeFromUser() {
-        System.out.println("Time: ");
-        return SCANNER.nextLine();
+    private LocalTime getTimeFromUser() {
+        System.out.print("Time: ");
+        return LocalTime.parse(SCANNER.nextLine(), Task.TIME_PATTERN);
     }
+
 }

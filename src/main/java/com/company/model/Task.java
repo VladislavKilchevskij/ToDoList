@@ -2,28 +2,31 @@ package com.company.model;
 
 import com.company.enums.Category;
 import com.company.enums.Priority;
-
-import java.util.Objects;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public abstract class Task implements Executable, Comparable {
+    public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    public static final DateTimeFormatter TIME_PATTERN = DateTimeFormatter.ofPattern("HH:mm");
 
     protected UUID id;
     protected String name;
     protected Category taskCategory;
     protected Priority taskPriority;
-    protected String date;
+    protected LocalDate date;
 
     protected Task() {
     }
 
-    protected Task(UUID id, String name, Category category, Priority priority, String date) {
+    public Task(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date) {
         this.id = id;
-        this.taskCategory = category;
-        this.taskPriority = priority;
         this.name = name;
+        this.taskCategory = taskCategory;
+        this.taskPriority = taskPriority;
         this.date = date;
     }
+
     public String getName() {
         return name;
     }
@@ -44,20 +47,16 @@ public abstract class Task implements Executable, Comparable {
         this.taskPriority = taskPriority;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public UUID getId() {
-        return id;
     }
 
     public Category getTaskCategory() {
         return taskCategory;
     }
 
-    public Priority getTaskPriority() {
-        return taskPriority;
+    public LocalDate getDate() {
+        return date;
     }
 
     @Override
@@ -66,20 +65,13 @@ public abstract class Task implements Executable, Comparable {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return Objects.equals(id, task.id) &&
-                Objects.equals(name, task.name) &&
-                taskCategory == task.taskCategory &&
-                taskPriority == task.taskPriority &&
-                Objects.equals(date, task.date);
+    public int hashCode() {
+        return super.hashCode();
     }
 
     @Override

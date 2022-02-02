@@ -25,7 +25,7 @@ public final class TaskDataBase {
         TASKS.add(task);
     }
 
-    public static void sorted() {
+    public static void sortByPriority() {
         TASKS.stream()
                 .sorted()
                 .forEach(System.out::println);

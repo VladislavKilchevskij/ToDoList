@@ -3,24 +3,31 @@ package com.company.model;
 import com.company.enums.Category;
 import com.company.enums.Priority;
 
-import java.util.Objects;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.UUID;
 
 public class Ongoing extends Task {
 
-    protected String endDate;
+    protected LocalDate endDate;
+    protected Period untillDeadline;
 
     public Ongoing() {
 
     }
 
-    public Ongoing(UUID id, String name, Category category, Priority priority, String date, String endDate) {
-        super(id, name, category, priority, date);
+    public Ongoing(UUID id, String name, Category taskCategory, Priority taskPriority, LocalDate date, LocalDate endDate, Period untillDeadline) {
+        super(id, name, taskCategory, taskPriority, date);
+        this.endDate = endDate;
+        this.untillDeadline = untillDeadline;
+    }
+
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void beforeDeadline() {
+        untillDeadline = Period.between(LocalDate.now(), endDate);
     }
 
     @Override
@@ -29,29 +36,27 @@ public class Ongoing extends Task {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return super.compareTo(o);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Ongoing ongoing = (Ongoing) o;
-        return endDate.equals(ongoing.endDate);
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), endDate);
+        return super.hashCode();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return super.compareTo(o);
     }
 
     @Override
     public String toString() {
         return "-----Ongoing task-----" + "\r\n"
                 + super.toString() + "\r\n"
-                + "Deadline date: " + endDate + "\r\n";
+                + "Deadline date: " + endDate + "\r\n"
+                + "Deadline in: " + untillDeadline.getMonths() + " month(s) "
+                + untillDeadline.getDays() + " day(s)." + "\r\n";
     }
 }
 
